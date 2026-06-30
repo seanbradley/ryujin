@@ -182,7 +182,10 @@ differs.
 
 ## Status & licensing
 
-Pre-award working repository. DICE is a fundamental-research program; the intended
-posture is **open source** (Apache-2.0) with Government Purpose Rights — security
-rests on signed doctrine and keys (Kerckhoffs's principle), not on secret
-algorithms.
+This repository contains the public simulation artifact referenced in our
+submitted DARPA DICE abstract. It is licensed under **Apache-2.0**. Any
+data-rights designation (e.g., Government Purpose Rights) for IP delivered
+under an eventual award would be negotiated separately and does not apply to
+this independently released simulation. Open-sourcing the mechanism is
+deliberate: security rests on signed doctrine and keys (Kerckhoffs's
+principle), not on secret algorithms.
