@@ -1,0 +1,13 @@
+# RYUJIN simulation dependencies
+#
+# The simulation CORE is pure Python standard library (Python 3.9+).
+# These modes require NOTHING below:
+#     python sim/ryujin_sim.py            # verbose scripted run
+#     python sim/ryujin_sim.py --quiet    # summary only
+#     python sim/ryujin_sim.py --sweep    # Monte Carlo
+#
+# matplotlib is required ONLY for the live animation:
+#     python sim/ryujin_sim.py --viz
+#
+# Install with:  pip install -r requirements.txt
+matplotlib>=3.7
