@@ -123,14 +123,14 @@ python sim/ryujin_sim.py --trust-tradeoff
 python sim/ryujin_sim.py --viz --heal
 
 # Figure / asset export (PDF- and Markdown-safe)
-python sim/ryujin_sim.py --filmstrip docs/sim_images/ryujin_worstcase_filmstrip.png
-python sim/ryujin_sim.py --compare   docs/sim_images/ryujin_worstcase_compare.png
-python sim/ryujin_sim.py --save-gif-compare docs/sim_images/ryujin_worstcase_compare.gif
+python sim/ryujin_sim.py --filmstrip docs/sim_images/ryujin_persistent_insider_filmstrip.png
+python sim/ryujin_sim.py --compare   docs/sim_images/ryujin_persistent_insider_compare_signals.png
+python sim/ryujin_sim.py --save-gif-compare docs/sim_images/ryujin_persistent_insider_baseline_vs_ryujin.gif
 ```
 
-### Worst-case filmstrip — RYUJIN vs. the centralized baseline
+### Persistent insider — filmstrip
 
-![RYUJIN worst-case filmstrip](docs/sim_images/ryujin_worstcase_filmstrip.png)
+![Persistent-insider filmstrip](docs/sim_images/ryujin_persistent_insider_filmstrip.png)
 
 The top row is the legacy centralized approach (naive average): the spoof drags
 its estimate off the target, and when the lone orchestrator is lost there is no
@@ -138,16 +138,32 @@ estimate at all. The second row is RYUJIN: the spoofer is identified and slashed
 (red ring), and the team keeps coordinating after a real loss. The third row shows
 roles being **dynamically reallocated by the auction each cycle, bounded by
 doctrine**; the bottom row shows coherence/horizon, the conservation ledger, and
-final trust.
+final trust. This static figure is the best single asset for papers, abstracts,
+and quick review.
 
-### Side-by-side battlespace (animated)
+### Persistent insider — baseline vs. RYUJIN animation
 
-![RYUJIN vs centralized, animated](docs/sim_images/ryujin_worstcase_compare.gif)
+![Persistent-insider baseline-vs-RYUJIN animation](docs/sim_images/ryujin_persistent_insider_baseline_vs_ryujin.gif)
 
 Both forces ingest the *identical* reports each cycle; only the fusion **rule**
-differs. The recovery (`--heal`) variants are
-[`ryujin_heal_filmstrip.png`](docs/sim_images/ryujin_heal_filmstrip.png) and
-[`ryujin_heal_compare.gif`](docs/sim_images/ryujin_heal_compare.gif).
+differs.
+
+### Additional generated assets
+
+- [`ryujin_persistent_insider_compare_signals.png`](docs/sim_images/ryujin_persistent_insider_compare_signals.png)
+  — technical signal view for the persistent-insider run: trust weights,
+  success-signal EMAs, throughput, coherence, and anchor error.
+- [`ryujin_persistent_insider_four_panel_animation.gif`](docs/sim_images/ryujin_persistent_insider_four_panel_animation.gif)
+  — four-panel animation of the persistent-insider run.
+- [`ryujin_recoverable_trust_filmstrip.png`](docs/sim_images/ryujin_recoverable_trust_filmstrip.png)
+  — static filmstrip for the recoverable-trust scenario where the attacker stops
+  spoofing and earns trust back.
+- [`ryujin_recoverable_trust_baseline_vs_ryujin.gif`](docs/sim_images/ryujin_recoverable_trust_baseline_vs_ryujin.gif)
+  — side-by-side animation of the recoverable-trust scenario.
+- [`ryujin_recoverable_trust_compare_signals.png`](docs/sim_images/ryujin_recoverable_trust_compare_signals.png)
+  — technical signal view for the recoverable-trust run.
+- [`ryujin_recoverable_trust_four_panel_animation.gif`](docs/sim_images/ryujin_recoverable_trust_four_panel_animation.gif)
+  — four-panel animation of the recoverable-trust run.
 
 ---
 
