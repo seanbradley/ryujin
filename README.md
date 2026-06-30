@@ -3,8 +3,8 @@
 **A Doctrine-Bound, Self-Organizing, Adversary-Resilient Architecture for
 Heterogeneous Multi-Agent Autonomy**
 
-A working repository for a DARPA **DICE** (Decentralized Artificial Intelligence
-through Controlled Emergence) **TA1 + TA2** proposal.
+A public simulation artifact for a DARPA **DICE** (Decentralized Artificial
+Intelligence through Controlled Emergence) **TA1 + TA2** abstract.
 
 ---
 
@@ -93,8 +93,9 @@ replanning cadence"]
     TA1P -- "coordination needs set control targets" --> TA2C
 ```
 
-The full architecture, attack/mitigation analysis, risk register, schedule, and
-references live in [`RYUJIN.md`](RYUJIN.md).
+The diagrams below summarize the architecture exercised by the simulation. The
+submitted abstract and proposal working files are intentionally not part of this
+public repository.
 
 ---
 
@@ -153,12 +154,10 @@ differs. The recovery (`--heal`) variants are
 
 | Path | Contents |
 |---|---|
-| [`RYUJIN.md`](RYUJIN.md) | Full solution document: architecture, Mermaid diagrams, algorithm, attack/mitigation analysis, schedule, risk register, references |
-| [`docs/RYUJIN_abstract_A1.md`](docs/RYUJIN_abstract_A1.md) | 7-page abstract, mapped to the official DICE A1 template |
-| `docs/DICE/` | Official DARPA DICE solicitation, templates (A1/P1–P4), and forms |
-| `docs/sim_images/` | Generated figures and animations referenced by the abstract and README |
 | [`sim/ryujin_sim.py`](sim/ryujin_sim.py) | Didactic single-file simulation of the architecture |
+| [`docs/sim_images/`](docs/sim_images/) | Generated figures and animations referenced by this README |
 | [`requirements.txt`](requirements.txt) | Python dependencies (`matplotlib` + `pillow` for visualization/export) |
+| [`LICENSE`](LICENSE) | Apache-2.0 license |
 
 ---
 
