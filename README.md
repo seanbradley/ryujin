@@ -32,10 +32,12 @@ distributed planning depth and replanning cadence. This explicit, bidirectional,
 *measurable* coupling is RYUJIN's distinguishing claim and the Phase 1
 formalization target.
 
-> The name is a light hook: **Ryujin** is the sea sovereign whose disciplined
-> servants hold their coherence under pressure while a cheap, dense, leaderless
-> adversary cannot. The architecture itself is hardware-agnostic and named in
-> plain operational English throughout.
+> The name is a light hook: **Ryūjin** is the dragon king of the sea in Japanese
+> folklore, said to have stripped a disloyal jellyfish of its bones — the
+> traditional origin story for why jellyfish have none today. The metaphor:
+> a leaderless, doctrine-bound force holds its coherence under pressure; an
+> adversary with no spine to begin with cannot. The architecture itself is
+> hardware-agnostic and named in plain operational English throughout.
 
 ---
 
