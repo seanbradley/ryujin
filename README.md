@@ -20,16 +20,17 @@ It couples two layers DICE names explicitly:
 - **TA1 — coordination & resilient fusion.** A leaderless, doctrine-gated auction
   allocates skill-typed tasks; robust FLTrust-style fusion plus momentum-weighted
   reputation/slashing filters poisoned or adversarial reports so a Byzantine
-  insider cannot drag the collective estimate.
+  insider is isolated rather than allowed to drag the collective estimate.
 - **TA2 — local inference control (doctrine).** An inviolable, cryptographically
   signed **mission constitution** bounds every legal action; a drift detector and
   conservation ledger surface misalignment instead of letting it compound
   silently.
 
 The two layers are joined by a single measurable quantity — the **coherence
-horizon** — which the TA2 controller publishes and the TA1 planner uses to bound
-its distributed planning depth and replanning cadence. This explicit, bidirectional,
-*measurable* coupling is RYUJIN's distinguishing claim.
+horizon** — an estimated, auditable bound that the TA1 planner uses to bound
+distributed planning depth and replanning cadence. This explicit, bidirectional,
+*measurable* coupling is RYUJIN's distinguishing claim and the Phase 1
+formalization target.
 
 > The name is a light hook: **Ryujin** is the sea sovereign whose disciplined
 > servants hold their coherence under pressure while a cheap, dense, leaderless
@@ -60,7 +61,7 @@ doctrine-gated task allocation"]
         FUSE["Robust fusion (FLTrust-style)
 + reputation / slashing"]
       end
-      DOC -->|invariants gate every action| AUCT
+      DOC -->|rejects doctrine-violating actions| AUCT
       FUSE -->|defended consensus| DOC
       AUCT --> DRIFT
     end
@@ -82,13 +83,13 @@ flowchart LR
     TA2C["TA2 controller
 role enforcement · drift detection"]
     H["Coherence horizon
-how many cycles role-coherence
-holds under current adversarial load"]
+estimated auditable bound on
+role coherence under adversarial load"]
     TA1P["TA1 planner
 distributed task decomposition
 replanning cadence"]
 
-    TA2C -- "publishes the horizon" --> H
+    TA2C -- "estimates the horizon" --> H
     H -- "bounds planning depth + replan cadence" --> TA1P
     TA1P -- "coordination needs set control targets" --> TA2C
 ```
