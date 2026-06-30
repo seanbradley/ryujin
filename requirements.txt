@@ -6,8 +6,13 @@
 #     python sim/ryujin_sim.py --quiet    # summary only
 #     python sim/ryujin_sim.py --sweep    # Monte Carlo
 #
-# matplotlib is required ONLY for the live animation:
+# matplotlib is required ONLY for the live animation and figure export:
 #     python sim/ryujin_sim.py --viz
+#     python sim/ryujin_sim.py --filmstrip ... / --compare ...
+#
+# pillow is required ONLY to stitch animated GIFs:
+#     python sim/ryujin_sim.py --save-gif ... / --save-gif-compare ...
 #
 # Install with:  pip install -r requirements.txt
 matplotlib>=3.7
+pillow>=9.0

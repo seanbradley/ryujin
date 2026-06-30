@@ -1,0 +1,63 @@
+/* ----------------------------------------------------------------------------
+   DARPA DICE abstract -- Typora export theme (12-pt body, 1" margins, Letter).
+   ----------------------------------------------------------------------------
+   INSTALL:
+     1. Typora -> File -> Preferences -> Appearance -> Open Theme Folder.
+     2. Copy this file there as "typora-darpa.css".
+     3. Restart Typora -> Themes menu -> "Typora Darpa".
+   EXPORT:
+     File -> Export -> PDF. Set the export dialog margins to 1 inch on all sides
+     (that setting is authoritative in Typora's PDF engine). The @page rule below
+     is a fallback for builds that honor it.
+   VERIFY (conformance is mandatory -- BAA 5.2 rejects non-conforming abstracts):
+     Open the exported PDF and confirm 1" margins (ruler) and 12-pt body text.
+
+   NOTE: The OFFICIAL submission should be assembled in the required
+   A1_-_DICE_Abstract_Template.docx (it already encodes the cover sheet, ToC,
+   and 12-pt/1" styles). Use Typora + this theme for DRAFTING and layout preview;
+   treat the .docx as the system of record to guarantee a conforming cover sheet.
+---------------------------------------------------------------------------- */
+
+@page {
+  size: Letter;
+  margin: 1in;
+}
+
+#write {
+  max-width: 6.5in; /* 8.5in page - 2 x 1in margins */
+  margin: 0 auto;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 12pt;
+  line-height: 1.45;
+  color: #000;
+}
+
+#write h1 {
+  font-size: 17pt;
+}
+#write h2 {
+  font-size: 14pt;
+}
+#write h3 {
+  font-size: 12pt;
+  font-weight: bold;
+}
+#write p,
+#write li {
+  font-size: 12pt;
+}
+
+/* Figures, tables, captions, and code may use 8-10 pt per the template. */
+#write table,
+#write th,
+#write td,
+#write figcaption,
+#write code,
+#write pre,
+.md-fences {
+  font-size: 10pt;
+}
+
+#write img {
+  max-width: 100%;
+}

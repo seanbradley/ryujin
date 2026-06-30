@@ -1,6 +1,6 @@
 # RYUJIN
 
-## A Doctrine-Bound, Self-Organizing Counter-Swarm Architecture
+## A Doctrine-Bound, Self-Organizing, Adversary-Resilient Architecture for Heterogeneous Multi-Agent Autonomy
 
 **DARPA BAA:** Decentralized Artificial Intelligence through Controlled
 Emergence (DICE)
@@ -545,15 +545,29 @@ and an honestly-stated residual.
 
 A standard-library localhost model of the coordination/control layer
 (`sim/ryujin_sim.py`) already runs the mechanics above -- robust FLTrust fusion,
-leaderless auction, doctrine-anchored recoverable reputation, debt-ledger
-escalation, and graceful degradation after node loss. A built-in Monte Carlo
-sweep (`--sweep`) randomizes fault timing and adversary fraction across hundreds
-of trials. Representative result (400 trials): median RYUJIN order-completion
-~0.88 vs. ~0.58 for a centralized baseline; median RYUJIN post-loss coherence
-~0.81 vs. 0.00 (the centralized orchestrator is a single point of failure);
-adversaries isolated and honest nodes healed in **every** trial. This is a
-mechanism illustration -- the constants are illustrative, not calibrated -- and
-exists to de-risk the Phase 1 build, not to stand in for it.
+leaderless auction, doctrine-anchored recoverable reputation, a **conservation
+ledger** that re-broadcasts (never drops) unmet orders, and graceful degradation
+after node loss. A built-in Monte Carlo sweep (`--sweep`) randomizes fault timing
+and adversary fraction across hundreds of trials. Representative result (200
+trials, 0-2 of 6 nodes compromised): median RYUJIN order-completion **0.98** vs.
+**0.61** for a centralized baseline; median RYUJIN post-loss coherence **0.81**
+vs. **0.00** (the centralized orchestrator is a single point of failure);
+adversaries isolated and **no honest node wrongly benched in any trial**.
+Transient order backlog under a compound shock (insider + node loss) is surfaced
+to the operator and then **burned down to zero** as coherence recovers -- it is
+conserved, not hidden.
+
+The model also makes the **trust-posture tradeoff** explicit (`--trust-tradeoff`,
+`--zero-trust`): an *innocent-until-proven-guilty* start (peers begin trusted)
+contains a persistent insider in ~2 cycles with zero honest benchings, whereas a
+*zero-trust / earn-your-standing* start (peers begin slashed and must attest their
+way in) contains the insider **immediately (0 cycles)** at the cost of a short,
+bounded bootstrap (~10 agent-cycles of self-attestation, with completion
+recovering to parity by end of run). The recoverable-reputation hysteresis runs
+between a **distrust floor of 0.30** and a deliberately high **reinstate ceiling of
+0.70**, so a previously hostile node serves a real probation before rejoining
+fusion. This is a mechanism illustration -- the constants are illustrative, not
+calibrated -- and exists to de-risk the Phase 1 build, not to stand in for it.
 
 ---
 

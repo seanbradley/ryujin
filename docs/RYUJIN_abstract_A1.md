@@ -9,6 +9,10 @@ Controlled Emergence (DICE)**
 > into the official `A1_-_DICE_Abstract_Template.docx`, formatted to 12-pt with
 > 1" margins, blue instructional text deleted, exported to PDF, and uploaded via
 > BAAT. Fields in [BRACKETS] require your confirmation before submission.
+> The cover-sheet table below maps onto the template's COVER SHEET page (excluded
+> from the 7-page count). Figure 1 must be inserted manually in Word from
+> `docs/sim_images/ryujin_worstcase_filmstrip.png` (a Markdown image embed does
+> not transfer on copy-paste); size it to 8-10 pt captioning per the template.
 
 ---
 
@@ -16,7 +20,7 @@ Controlled Emergence (DICE)**
 
 | Field | Value |
 |---|---|
-| Abstract Title | RYUJIN: A Doctrine-Bound, Self-Organizing Counter-Swarm Architecture for Heterogeneous Multi-Agent Autonomy |
+| Abstract Title | RYUJIN: A Doctrine-Bound, Self-Organizing, Adversary-Resilient Architecture for Heterogeneous Multi-Agent Autonomy |
 | Technical Area | [X] TA1 & TA2   [ ] TA3 |
 | Proposer Organization | SEAN BRADLEY INC. (DBA Victory Technology Partners) |
 | Technical POC | Sean Bradley<br /><sean@victorytechpartners.com> <br />(213) 925-8598<br />8605 Santa Monica Blvd., #25450, Los Angeles, CA 90069-4109 |
@@ -92,7 +96,11 @@ human responsibility boundary instead of accommodating decline.
 
 **TA1 -- Coordination and resilient fusion.** Task allocation is a **leaderless
 auction**: agents bid on and decompose tasks over a peer-to-peer bus with no
-central scheduler. Selection is biased by two complementary signals -- reactive
+central scheduler. **Roles are not statically assigned; they are dynamically
+allocated by the auction each cycle and re-allocated around distrusted or lost
+agents, bounded by the signed constitution -- so the collective self-organizes
+into mission-effective teams (allocating roles) without a central planner, yet
+no agent can ever assume a role the doctrine forbids.** Selection is biased by two complementary signals -- reactive
 steering on the live state of nearby agents (fast local deconfliction) and a
 **shared, recency-weighted success signal** that nudges agents toward task
 patterns that have recently worked (a lightweight, leave-a-trail form of
@@ -153,14 +161,47 @@ mitigation and a residual we do not overclaim.
 
 **Preliminary evidence (single-host model).** A standard-library localhost model
 of the coordination/control layer already runs the above mechanics -- robust
-FLTrust fusion, leaderless auction, doctrine-anchored recoverable reputation,
-debt-ledger escalation, and graceful degradation after node loss. A Monte Carlo
-sweep over randomized fault timing and adversary fraction shows the
-decentralized adaptor sustaining coordination (median post-loss coherence ~0.8;
-adversaries isolated and honest nodes healed in every trial) where the
-centralized baseline collapses to zero on orchestrator loss. It is a mechanism
-illustration, not calibrated performance, and exists to de-risk the Phase 1
-build.
+FLTrust fusion, leaderless auction, doctrine-anchored recoverable reputation, a
+conservation ledger that re-broadcasts (never drops) unmet orders, and graceful
+degradation after node loss. Across a 200-trial Monte Carlo sweep over randomized
+fault timing and adversary fraction (0-2 of 6 nodes compromised), the
+decentralized adaptor sustained coordination -- median completion 0.98 and median
+post-loss coherence 0.81 -- isolated every adversary and wrongly benched no honest
+agent in any trial, while the centralized baseline collapsed to zero coherence on
+orchestrator loss (median completion 0.61). Transient order backlog under the
+compound shock (insider + node loss) is surfaced to the operator and then burned
+down as coherence recovers -- conserved, not hidden. The model also exposes the
+trust-posture tradeoff explicitly: a zero-trust start contains an insider
+immediately (0 vs ~2 cycles) at the cost of a short, bounded self-attestation
+bootstrap (~10 agent-cycles). It is a mechanism illustration, not calibrated
+performance, and exists to de-risk the Phase 1 build.
+
+![RYUJIN single-host model -- persistent-insider scenario](sim_images/ryujin_worstcase_filmstrip.png)
+
+*Figure 1. Single-host mechanism illustration (standard-library Python; not
+calibrated performance). Persistent-insider scenario, four matched cycles. **Top
+row -- the legacy centralized approach:** the spoofed fix (red X) is never
+identified, so the single averaged estimate is dragged off the true target and,
+once the lone orchestrator is lost, coordination collapses entirely. **Second row
+-- RYUJIN on the same cycles:** the same spoofed fix is down-weighted by robust
+FLTrust fusion and ringed in red once its trust falls below the distrust floor and
+it is slashed from the fused estimate, so the defended track holds on truth and the
+team keeps coordinating after node loss. **Third row:** roles are dynamically
+auction-allocated each cycle and re-routed around the distrusted (red) and offline
+agents, which the doctrine excludes. **Bottom row:** the coherence horizon contracts
+under attack and recovers (left); the conserved order backlog spikes under the
+shock, is surfaced to the operator, and then burns down to zero rather than being
+hidden (center); and only the adversary ends distrusted -- shown against the
+recoverable-reputation hysteresis band (distrust floor 0.30, reinstate ceiling
+0.70). An animated version, a three-row RYUJIN-vs-baseline comparison figure, the
+recoverable-trust ("repentant adversary") scenario, and an innocent-vs-zero-trust
+posture comparison are in the public repository linked below.*
+
+**Code and online demonstration.** The single-host model, the Monte Carlo
+sweep, and both animations (persistent-insider and recoverable-trust) are
+available at [REPO: https://github.com/<org>/ryujin -- confirm URL before
+submission] (standard-library Python; matplotlib only for the optional
+visualization; license: [confirm -- e.g., MIT or Apache-2.0]).
 
 **Leveraged components (engineering substrate, not the contribution).** Compute
 and orchestration ride on **Ray** (stateful actors, scheduling, object store;
