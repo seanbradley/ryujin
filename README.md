@@ -6,6 +6,8 @@ Heterogeneous Multi-Agent Autonomy**
 A public simulation artifact for a DARPA **DICE** (Decentralized Artificial
 Intelligence through Controlled Emergence) **TA1 + TA2** abstract.
 
+Published by [Victory Technology Partners](https://victorytechpartners.com).
+
 ---
 
 ## What this is
